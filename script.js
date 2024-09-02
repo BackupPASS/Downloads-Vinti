@@ -4,6 +4,8 @@
     
         if (userAgent.indexOf('Windows') !== -1) {
             document.getElementById('windows-notification').style.display = 'flex';
+        } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
+              document.getElementById('mac-notification').style.display = 'flex';
         } else if (userAgent.indexOf('iPhone') !== -1) {
             document.getElementById('iphone-notification').style.display = 'flex';
         } else if (userAgent.indexOf('Android') !== -1) {
