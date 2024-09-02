@@ -68,20 +68,3 @@ changeBackground(0);
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  const helpButton = document.getElementById('helpButton');
-  const helpBox = document.getElementById('helpBox');
-  const closeButton = document.getElementById('closeButton');
-
-  helpButton.addEventListener('click', function() {
-      if (helpBox.style.display === 'block') {
-          helpBox.style.display = 'none';
-      } else {
-          helpBox.style.display = 'block';
-      }
-  });
-
-  closeButton.addEventListener('click', function() {
-      helpBox.style.display = 'none';
-  });
-});
