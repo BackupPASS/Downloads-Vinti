@@ -94,8 +94,8 @@ function checkSpeed() {
           var speedMbps = (fileSize * 8) / duration; // Mbps
 
         
-          if (speedMbps < 5) {
-              window.location.href = 'https://pbackuppass.github.io/Slow-Wifi';
+          if (speedMbps < 10) {
+              window.location.href = 'https://backuppass.github.io/Slow-Wifi';
           }
       };
 
