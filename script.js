@@ -10,6 +10,10 @@
             document.getElementById('iphone-notification').style.display = 'flex';
         } else if (userAgent.indexOf('Android') !== -1) {
             document.getElementById('android-notification').style.display = 'flex';
+          } else if (userAgent.indexOf('CrOS') !== -1) {  
+            document.getElementById('chromebook-notification').style.display = 'flex';
+        } else if (userAgent.indexOf('Linux') !== -1 && userAgent.indexOf('Android') === -1) { 
+            document.getElementById('linux-notification').style.display = 'flex';
         } else {
           document.getElementById('unknown-notification').style.display = 'flex';
       }
@@ -68,3 +72,45 @@ changeBackground(0);
 
 
 
+function checkSpeed() {
+
+  var testImageUrl = 'image2.jpg';
+  var startTime, endTime;
+
+
+  function speedTest() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', testImageUrl, true);
+      xhr.responseType = 'blob';
+      
+      xhr.onloadstart = function () {
+          startTime = new Date().getTime();
+      };
+
+      xhr.onload = function () {
+          endTime = new Date().getTime();
+          var duration = (endTime - startTime) / 1000; // seconds
+          var fileSize = xhr.response.size / 1024 / 1024; // MB
+          var speedMbps = (fileSize * 8) / duration; // Mbps
+
+        
+          if (speedMbps < 5) {
+              window.location.href = 'https://pbackuppass.github.io/Slow-Wifi';
+          }
+      };
+
+      xhr.onerror = function () {
+          window.location.href = 'https://backuppass.github.io/Site-Crashed';
+      };
+
+      xhr.send();
+  }
+
+
+  speedTest();
+}
+
+
+window.onload = function() {
+  checkSpeed();
+};
