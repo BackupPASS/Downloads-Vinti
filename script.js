@@ -31,6 +31,10 @@ function createNotificationCard(platform, title, desc, downloadLink, requirement
      actions.innerHTML += `<div><a href="${downloadLink}" class="download">Download Vinti</a></div>`;
    }
 
+  if (downloadLink2) {
+     actions.innerHTML += `<div><a href="${downloadLink2}" class="download">Download Vinti</a></div>`;
+   }
+
    if (requirementsLink) {
        actions.innerHTML += `<div><a href="${requirementsLink}" class="notnow">To view requirements click here.</a></div>`;
   }
@@ -61,7 +65,8 @@ function showPlatformNotification() {
        downloadLink = 'https://www.mediafire.com/file/sp5ugl8ycbet2vf/Vinti_2.0.msi/file';
        notification = createNotificationCard('windows', 'Windows Users', 'Vinti', downloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
-       notification = createNotificationCard('mac', 'Mac Users', 'Vinti is coming soon for MacOS 11.7.10 BigSur.', null, 'https://plingifyplug.com/VintiRequirements');
+     downloadLink2 = 'https://www.mediafire.com/file/0riyejf61baqcg8/Vinti.app.zip/file';
+       notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS 11.7.10 BigSur+.', downloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('iPhone') !== -1) {
        notification = createNotificationCard('iphone', 'iPhone Users', 'This software is not available for download on iPhone.', null, 'https://plingifyplug.com');
     } else if (userAgent.indexOf('Android') !== -1) {
@@ -169,11 +174,11 @@ let verificationTimer;
               verifyResult.style.color = "red"
                verifyResult.innerHTML = "Verification Failed please try again"
                verificationActive = false
-               },10000);
+               },15000);
       },1000)
 
        function checkVerification(){
-    if(verifyInput.value == "3$7hJKl2@" && verificationActive == true)
+    if(verifyInput.value == "3£7hJKl2@" && verificationActive == true)
       {
           clearTimeout(verificationTimer)
             verificationActive = false;
