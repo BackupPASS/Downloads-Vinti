@@ -31,10 +31,6 @@ function createNotificationCard(platform, title, desc, downloadLink, requirement
      actions.innerHTML += `<div><a href="${downloadLink}" class="download">Download Vinti</a></div>`;
    }
 
-  if (DownloadLink2) {
-     actions.innerHTML += `<div><a href="${DownloadLink2}" class="download">Download Vinti MacOS</a></div>`;
-   }
-
    if (requirementsLink) {
        actions.innerHTML += `<div><a href="${requirementsLink}" class="notnow">To view requirements click here.</a></div>`;
   }
