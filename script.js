@@ -58,10 +58,10 @@ function showPlatformNotification() {
    let notification = null;
    let downloadLink = "";
     if (userAgent.indexOf('Windows') !== -1) {
-       downloadLink = 'https://www.mediafire.com/file/as8ut28b5kgqlgl/Vinti_MacOS.app.zip/file';
+       downloadLink = 'https://www.mediafire.com/file/4mgqn6o6u7qukvv/Vinti.msi/file';
        notification = createNotificationCard('windows', 'Windows Users', 'Vinti Windows 10+', downloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
-     DownloadLink = 'https://www.mediafire.com/file/g7b0to2sp4nqgb6/Vinti_MacOS.app.zip/file';
+     DownloadLink = 'https://www.mediafire.com/file/as8ut28b5kgqlgl/Vinti_MacOS.app.zip/file';
        notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS 11.7.10 BigSur+.', DownloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('iPhone') !== -1) {
        notification = createNotificationCard('iphone', 'iPhone Users', 'This software is not available for download on iPhone.', null, 'https://plingifyplug.com');
