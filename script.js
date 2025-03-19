@@ -58,7 +58,7 @@ function showPlatformNotification() {
    let notification = null;
    let downloadLink = "";
     if (userAgent.indexOf('Windows') !== -1) {
-       downloadLink = 'https://www.mediafire.com/file/4mgqn6o6u7qukvv/Vinti.msi/file';
+       downloadLink = 'https://www.mediafire.com/file/e54zfamtb9c05vv/Vinti.msi/file';
        notification = createNotificationCard('windows', 'Windows Users', 'Vinti Windows 10+', downloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
      DownloadLink = 'https://www.mediafire.com/file/as8ut28b5kgqlgl/Vinti_MacOS.app.zip/file';
