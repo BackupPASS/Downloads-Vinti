@@ -64,15 +64,15 @@ function showPlatformNotification() {
      DownloadLink = 'https://www.mediafire.com/file/as8ut28b5kgqlgl/Vinti_MacOS.app.zip/file';
        notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS 11.7.10 BigSur+.', DownloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('iPhone') !== -1) {
-       notification = createNotificationCard('iphone', 'iPhone Users', 'This software is not available for download on iPhone.', null, 'https://plingifyplug.com');
+       notification = createNotificationCard('iphone', 'iPhone Users', 'This software is currently unavilable for iPhone.', null, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Android') !== -1) {
-        notification = createNotificationCard('android', 'Android Users', 'This software is not available for download on Android.', null, 'https://plingifyplug.com');
+        notification = createNotificationCard('android', 'Android Users', 'This software is not available for download on Android.', null, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('CrOS') !== -1) {
-       notification = createNotificationCard('chromebook', 'Chromebook Users', 'This software is not available for download on Chromebooks.', null, 'https://plingifyplug.com');
+       notification = createNotificationCard('chromebook', 'Chromebook Users', 'This software is not available for download on Chromebooks.', null, 'https://plingifyplug.com/VintiRequirements');
   } else if (userAgent.indexOf('Linux') !== -1 && userAgent.indexOf('Android') === -1) {
-        notification = createNotificationCard('linux', 'Linux Users', 'This software is not available for download on Linux.', null, 'https://plingifyplug.com');
+        notification = createNotificationCard('linux', 'Linux Users', 'This software is not available for download on Linux.', null, 'https://plingifyplug.com/VintiRequirements');
    }else{
-       notification = createNotificationCard('unknown', 'Unsupported Device', 'This software is not available on your device.', null, null);
+       notification = createNotificationCard('unknown', 'Unsupported Device', 'This software is not available on your device.', null, 'https://plingifyplug.com/VintiRequirements');
    }
 
     notificationContainer.appendChild(notification);
