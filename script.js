@@ -65,7 +65,7 @@ function showPlatformNotification() {
        downloadLink = 'https://www.mediafire.com/file/jyezwyt811am6jx/Vinti.msi/file';
        notification = createNotificationCard('windows', 'Windows Users', 'Vinti Windows 10+', downloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
-     DownloadLinkBeta = 'https://www.mediafire.com/file/as8ut28b5kgqlgl/Vinti_MacOS.app.zip/file';
+     downloadlink = 'https://backuppass.github.io/Downloads-Vinti-Beta/';
        notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS is currently only available on Beta which is accessable via the bottom section of this webpage, This is only temporary while we try to fix these issues..', DownloadLinkBeta, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('iPhone') !== -1) {
        notification = createNotificationCard('iphone', 'iPhone Users', 'This software is currently unavilable for iPhone.', null, 'https://plingifyplug.com/VintiRequirements');
