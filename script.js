@@ -1,3 +1,15 @@
+let currentIndex = 0;
+const images = [
+    'image2.jpg',
+];
+
+const slideshow = document.getElementById('background-slideshow');
+function changeBackground(index) {
+    slideshow.style.backgroundImage = `url(${images[index]})`;
+    currentIndex = index;
+}
+changeBackground(0);
+
 const notificationContainer = document.getElementById('notification-container');
 const verificationCard = document.getElementById('verification-card');
 const verifyBtn = document.getElementById('verify-btn');
@@ -117,17 +129,7 @@ setTimeout(showCookieNotice, 1000);
 
 document.cookie = "username=JohnDoe; path=/; secure; HttpOnly";
 
-let currentIndex = 0;
-const images = [
-    'image2.jpg',
-];
 
-const slideshow = document.getElementById('background-slideshow');
-function changeBackground(index) {
-    slideshow.style.backgroundImage = `url(${images[index]})`;
-    currentIndex = index;
-}
-changeBackground(0);
 
 
 let verificationActive = false;
