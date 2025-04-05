@@ -19,13 +19,9 @@ changeBackground(0);
 setInterval(nextBackground, 5000);
 
 const notificationContainer = document.getElementById('notification-container');
-const verificationCard = document.getElementById('verification-card');
-const verifyBtn = document.getElementById('verify-btn');
-const verifyInput = document.getElementById('verify-input');
-const verifyResult = document.getElementById('verify-result');
 let downloadBtn;
 
-function createNotificationCard(platform, title, desc, downloadLink, requirementsLink, downloadLinkBeta) {
+function createNotificationCard(platform, title, desc, downloadLink, requirementsLink, downloadButtonText) {
     const card = document.createElement('div');
     card.className = 'card';
     card.id = `${platform}-notification`;
@@ -47,11 +43,7 @@ function createNotificationCard(platform, title, desc, downloadLink, requirement
     actions.className = 'actions';
 
     if (downloadLink) {
-        actions.innerHTML += `<div><a href="${downloadLink}" class="download">Download Vinti</a></div>`;
-    }
-
-    if (downloadLinkBeta) {
-        actions.innerHTML += `<div><a href="${downloadLinkBeta}" class="download">Download Vinti Beta</a></div>`;
+        actions.innerHTML += `<div><a href="${downloadLink}" class="download">${downloadButtonText}</a></div>`;
     }
 
     if (requirementsLink) {
@@ -79,40 +71,43 @@ function createNotificationCard(platform, title, desc, downloadLink, requirement
 function showPlatformNotification() {
     const userAgent = navigator.userAgent;
     let notification = null;
-    let downloadLink = "";
-    let downloadLinkBeta = "";
-    
+    let downloadLink = '';
+    let downloadButtonText = '';
+
     if (userAgent.indexOf('Windows') !== -1) {
         downloadLink = 'https://www.mediafire.com/file/jyezwyt811am6jx/Vinti.msi/file';
-        notification = createNotificationCard('windows', 'Windows Users', 'Vinti Windows 10+', downloadLink, 'https://plingifyplug.com/VintiRequirements');
-    } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
-        downloadLinkBeta = 'https://backuppass.github.io/Downloads-Vinti-Beta/';
-        notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS is currently only available on Beta which is accessable via the bottom section of this webpage, This is only temporary while we try to fix these issues..', downloadLinkBeta, 'https://plingifyplug.com/VintiRequirements');
+        downloadButtonText = 'Download Vinti';
+        notification = createNotificationCard('windows', 'Windows Users', 'Vinti Windows 10+', downloadLink, 'https://plingifyplug.com/VintiRequirements', downloadButtonText);
+    } else if (userAgent.indexOf('Mac') !== -1) {
+        downloadLink = 'https://backuppass.github.io/Downloads-Vinti-Beta/';
+        downloadButtonText = 'Visit Vinti Beta'; // Update text for macOS
+        notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS Beta - MacOS BigSur 11.7.10 and newer are supported.', downloadLink, 'https://plingifyplug.com/VintiRequirements', downloadButtonText);
     } else if (userAgent.indexOf('iPhone') !== -1) {
-        notification = createNotificationCard('iphone', 'iPhone Users', 'This software is currently unavilable for iPhone.', null, 'https://plingifyplug.com/VintiRequirements');
+        notification = createNotificationCard('iphone', 'iPhone Users', 'This software is not available for download on iPhone.', null, 'https://plingifyplug.com');
     } else if (userAgent.indexOf('Android') !== -1) {
-        notification = createNotificationCard('android', 'Android Users', 'This software is not available for download on Android.', null, 'https://plingifyplug.com/VintiRequirements');
+        notification = createNotificationCard('android', 'Android Users', 'This software is not available for download on Android.', null, 'https://plingifyplug.com');
     } else if (userAgent.indexOf('CrOS') !== -1) {
-        notification = createNotificationCard('chromebook', 'Chromebook Users', 'This software is not available for download on Chromebooks.', null, 'https://plingifyplug.com/VintiRequirements');
+        notification = createNotificationCard('chromebook', 'Chromebook Users', 'This software is not available for download on Chromebooks.', null, 'https://plingifyplug.com');
     } else if (userAgent.indexOf('Linux') !== -1 && userAgent.indexOf('Android') === -1) {
-        notification = createNotificationCard('linux', 'Linux Users', 'This software is not available for download on Linux.', null, 'https://plingifyplug.com/VintiRequirements');
+        notification = createNotificationCard('linux', 'Linux Users', 'This software is not available for download on Linux.', null, 'https://plingifyplug.com');
     } else {
-        notification = createNotificationCard('unknown', 'Unsupported Device', 'This software is not available on your device.', null, 'https://plingifyplug.com/VintiRequirements');
+        notification = createNotificationCard('unknown', 'Unsupported Device', 'This software is not available on your device.', null, null);
     }
 
     notificationContainer.appendChild(notification);
     notification.classList.add('card-show');
 
-    if (downloadLink != "") {
-        downloadBtn = document.querySelector('#windows-notification .download');
+    if (downloadLink !== "") {
+        downloadBtn = document.querySelector(`#${userAgent.indexOf('Mac') !== -1 ? 'mac' : 'windows'}-notification .download`);
         downloadBtn.addEventListener('click', function(event) {
             event.preventDefault();
-            startVerification(downloadLink);
+            window.location.href = downloadLink;
         });
     }
 }
 
 showPlatformNotification();
+
 setTimeout(function () {
     showCookieNotice();
 }, 1000);
@@ -133,60 +128,7 @@ function acceptCookies() {
 }
 
 document.getElementById('accept-cookies').addEventListener('click', acceptCookies);
+
 setTimeout(showCookieNotice, 1000);
 
 document.cookie = "username=JohnDoe; path=/; secure; HttpOnly";
-
-
-
-
-let verificationActive = false;
-let verificationTimer;
-
-function startVerification(link) {
-    const notification = createNotificationCard('ping', "Security Check", "Please be ready for a small verification check", null, null);
-    notificationContainer.appendChild(notification);
-    notification.classList.add('card-show');
-    setTimeout(function() {
-        verificationActive = true;
-        verificationCard.style.display = "flex";
-        verificationTimer = setTimeout(function() {
-            verifyInput.value = "";
-            verifyResult.style.display = "flex";
-            verifyResult.style.color = "red";
-            verifyResult.innerHTML = "Verification Failed please try again";
-            verificationActive = false;
-        }, 15000);
-    }, 1000);
-
-    function checkVerification() {
-        if (verifyInput.value == "3£7hJKl2@" && verificationActive == true) {
-            clearTimeout(verificationTimer);
-            verificationActive = false;
-            verifyResult.style.display = "flex";
-            verifyResult.style.color = "green";
-            verifyResult.innerHTML = "Verification Completed!";
-            window.location.href = link;
-            verificationCard.style.display = "none";
-        } else if (verificationActive == false) {
-            verifyResult.style.display = "flex";
-            verifyResult.style.color = "red";
-            verifyResult.innerHTML = "Verification failed due to no time or incorrect Input";
-        } else {
-            verifyResult.style.display = "flex";
-            verifyResult.style.color = "red";
-            verifyResult.innerHTML = "Incorrect verification code try again!";
-        }
-    }
-
-    verifyBtn.addEventListener('click', function() {
-        checkVerification();
-    });
-
-    verifyInput.addEventListener("keyup", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            checkVerification();
-        }
-    });
-}
