@@ -4,7 +4,7 @@ const verifyBtn = document.getElementById('verify-btn');
 const verifyInput = document.getElementById('verify-input');
  const verifyResult = document.getElementById('verify-result');
 let downloadBtn;
-function createNotificationCard(platform, title, desc, downloadLink, requirementsLink) {
+function createNotificationCard(platform, title, desc, downloadLink, requirementsLink, downloadLinkBeta) {
    const card = document.createElement('div');
    card.className = 'card';
    card.id = `${platform}-notification`;
@@ -65,8 +65,8 @@ function showPlatformNotification() {
        downloadLink = 'https://www.mediafire.com/file/jyezwyt811am6jx/Vinti.msi/file';
        notification = createNotificationCard('windows', 'Windows Users', 'Vinti Windows 10+', downloadLink, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
-     downloadlink = 'https://backuppass.github.io/Downloads-Vinti-Beta/';
-       notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS is currently only available on Beta which is accessable via the bottom section of this webpage, This is only temporary while we try to fix these issues..', DownloadLinkBeta, 'https://plingifyplug.com/VintiRequirements');
+     downloadLink = 'https://backuppass.github.io/Downloads-Vinti-Beta/';
+       notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS is currently only available on Beta which is accessable via the bottom section of this webpage, This is only temporary while we try to fix these issues..', downloadLinkBeta, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('iPhone') !== -1) {
        notification = createNotificationCard('iphone', 'iPhone Users', 'This software is currently unavilable for iPhone.', null, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Android') !== -1) {
