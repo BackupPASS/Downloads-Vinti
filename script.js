@@ -81,7 +81,7 @@ function showPlatformNotification() {
     } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
         downloadLink = 'https://github.com/BackupPASS/Downloads/raw/refs/heads/main/Vinti%20MacOS.app.zip';
         downloadButtonText = 'Download Vinti'; 
-        notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS BigSur 11.7.10+', downloadLink, 'https://plingifyplug.com/VintiRequirements', downloadButtonText);
+        notification = createNotificationCard('mac', 'Mac Users', 'Vinti MacOS BigSur 11.5+', downloadLink, 'https://plingifyplug.com/VintiRequirements', downloadButtonText);
      } else if (userAgent.indexOf('iPhone') !== -1) {
         notification = createNotificationCard('iphone', 'iPhone Users', 'This software is not available for download on iPhone.', null, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Android') !== -1) {
