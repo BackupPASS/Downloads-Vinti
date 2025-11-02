@@ -75,7 +75,7 @@ function showPlatformNotification() {
     let downloadButtonText = '';
 
     if (userAgent.indexOf('Windows') !== -1) {
-        downloadLink = 'https://github.com/BackupPASS/Downloads-Vinti/releases/download/V2.50.70/Vinti_Setup_2.50.70.exe';
+        downloadLink = 'https://github.com/BackupPASS/Downloads-Vinti/releases/download/V2.50.75/Vinti_Setup_2.50.75.exe';
         downloadButtonText = 'Download Vinti';
         notification = createNotificationCard('windows', 'Windows Users', 'Vinti Windows 10+', downloadLink, 'https://plingifyplug.com/VintiRequirements', downloadButtonText);
     } else if (userAgent.indexOf('Mac') !== -1 && userAgent.indexOf('iPhone') === -1) {
