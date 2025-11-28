@@ -89,7 +89,7 @@ function showPlatformNotification() {
     } else if (userAgent.indexOf('CrOS') !== -1) {
         notification = createNotificationCard('chromebook', 'Chromebook Users', 'This software is not available for download on Chromebooks, Including ChromeOS Linux.', null, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Linux') !== -1 && userAgent.indexOf('Android') === -1) {
-        downloadLink = 'https://github.com/BackupPASS/Vinti/releases/download/Vinti-Linux/Vinti.Setup.Files.zip';
+        downloadLink = 'https://github.com/BackupPASS/Downloads-Vinti/releases/download/V2.50.82/Vinti.Setup.Linux.zip';
         downloadButtonText = 'Download Vinti For Linux'; 
         notification = createNotificationCard('linux', 'Linux Users', 'Vinti Linux All Distributions', downloadLink, 'https://plingifyplug.com/VintiRequirements', downloadButtonText);
     } else {
