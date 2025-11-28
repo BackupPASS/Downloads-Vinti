@@ -87,9 +87,11 @@ function showPlatformNotification() {
     } else if (userAgent.indexOf('Android') !== -1) {
         notification = createNotificationCard('android', 'Android Users', 'This software is not available for download on Android.', null, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('CrOS') !== -1) {
-        notification = createNotificationCard('chromebook', 'Chromebook Users', 'This software is not available for download on Chromebooks.', null, 'https://plingifyplug.com/VintiRequirements');
+        notification = createNotificationCard('chromebook', 'Chromebook Users', 'This software is not available for download on Chromebooks, Including ChromeOS Linux.', null, 'https://plingifyplug.com/VintiRequirements');
     } else if (userAgent.indexOf('Linux') !== -1 && userAgent.indexOf('Android') === -1) {
-        notification = createNotificationCard('linux', 'Linux Users', 'This software is not available for download on Linux.', null, 'https://plingifyplug.com/VintiRequirements');
+        downloadLink = 'https://github.com/BackupPASS/Vinti/releases/download/Vinti-Linux/Vinti.Setup.Files.zip';
+        downloadButtonText = 'Download Vinti For Linux'; 
+        notification = createNotificationCard('linux', 'Linux Users', 'Vinti Linux All Distributions', downloadLink, 'https://plingifyplug.com/VintiRequirements', downloadButtonText);
     } else {
         notification = createNotificationCard('unknown', 'Unsupported Device', 'This software is not available on your device.', null, null);
     }
